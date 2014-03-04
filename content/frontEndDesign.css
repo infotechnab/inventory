@@ -1,0 +1,17 @@
+/* 
+    Document   : frontEndDesign
+    Created on : Feb 16, 2014, 8:39:51 AM
+    Author     : nabaraj
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
