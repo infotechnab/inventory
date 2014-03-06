@@ -10,6 +10,31 @@
         <title>
             Inventory Is Easy
         </title>
+         <script type="text/javascript" src="<?php echo base_url(); ?>content/jquery-1.9.1.min.js"> </script>
+        
+         <script src="http://code.jquery.com/jquery-1.8.2.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            
+var strip, strcountry, strcity, strregion, strlatitude, strlongitude, strtimezone
+function GetUserInfo(data) {
+strip = data.host; strcountry = data.countryName; strcity = data.city;
+strregion = data.region; strlatitude = data.latitude; strlongitude = data.longitude;
+strtimezone = data.timezone;
+}
+$(function () {
+BindUserInfo();
+})
+function BindUserInfo() {
+document.getElementById('lblIP').value = strip;
+document.getElementById('lblCountry').value = strcountry;
+document.getElementById('lblCity').value = strcity;
+//document.getElementById('lblregion').innerHTML = strregion;
+document.getElementById('lbllatitude').value = strlatitude;
+document.getElementById('lbllongitude').value = strlongitude;
+//document.getElementById('lbltimezone').innerHTML = strtimezone;
+}
+</script>
+<script type="text/javascript" src="http://smart-ip.net/geoip-json?callback=GetUserInfo"></script>
         <style>
             html
             {
@@ -24,10 +49,12 @@
             }
             #topNavigationWithSlider
             {
-                background: #00620C url('http://localhost/inventory/content/images/inventrogb.jpg') no-repeat;
+                background: #00620C url('http://localhost/inventory/content/images/inventrogb.jpg') fixed; 
+                background-repeat: no-repeat;
                 width: 100%;
                 height: 650px;
                 border-bottom: 2px solid #fff;
+                
             }
             #topNavigationDiv
             {
@@ -182,8 +209,19 @@
         </style>
     </head>
     <body>
+        <?php 
+
+//echo $_SERVER['HTTP_USER_AGENT'];
+            $user_agent = $_SERVER['HTTP_USER_AGENT'];
+    if (preg_match('/MSIE/i', $user_agent)) { $browser = "Internet Explorer";}
+    elseif (preg_match('/Firefox/i', $user_agent)){$browser = "Mozilla Firefox";}
+    elseif (preg_match('/Chrome/i', $user_agent)){$browser = "Google Chrome";}
+    elseif (preg_match('/Safari/i', $user_agent)){$browser = "Safari";}
+    elseif (preg_match('/Opera/i', $user_agent)){$browser = "Opera";}
+    else {$browser = "Other";}
+ ?> 
         <div id="topNavigationWithSlider">
-            <div id="topNavigationDiv">
+          <div id="topNavigationDiv">
 
                 <div id="topNavigation">
                     <div id="logoDiv">
@@ -283,6 +321,14 @@
                    
                     ?>
                     <?php echo form_open('/defaultview/notifyme/#notifyMePlz') ?>
+                    
+                    <input type="hidden" id="lblIP" name="ip" />
+                    <input type="hidden" id="lblCountry" name="country" />
+                    <input type="hidden" id="lblCity" name="city"/>
+                    <input type="hidden" id="lbllatitude" name="latitude"/>
+                    <input type="hidden" id="lbllongitude" name="longitude"/>
+                    <input type="hidden" name="browser" value="<?php echo $browser; ?>" />
+                    
                     <input id="email" type="email" name="subscription"  placeholder="Email Address" required/>
                     <input type="submit" value="Notify Me">
                     <?php }

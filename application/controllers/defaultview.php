@@ -17,23 +17,38 @@ class Defaultview extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+    
+     function __construct() {
+        parent::__construct();
+        $this->load->model('dbmodel');
+       
+    }
 	public function index()
 	{
 		$this->load->view('home');
+                $this->load->model('dbmodel');
 	}
         
         public function notifyme()
         {
-            $emailAddress = $_POST['subscription'];
+            $email = $_POST['subscription'];
+            $ipaddress= $_POST['ip'];
+            $location ="Location of visitor";
+            $country = $_POST['country'];
+            $city = $_POST['city'];
+            $latitude = $_POST['latitude'];
+            $longitude = $_POST['longitude'];
+            $device = "Device browsing";
+            $OS= "OS of using software";
+            $browser = $_POST['browser'];
+            
+            $this->dbmodel->registerd_email($email,$ipaddress,$country,$city,$latitude,$longitude,$browser);
+            
+            
             $data['notifyMeMessage']= "Thank you for your interest.";
             $this->load->view('home',$data);
             
-            $ipaddress= "Address of visitor ";
-            $location ="Location of visitor";
-            $country = "Country of Visitor";
-            $device = "Device browsing";
-            $OS= "OS of using software";
-            $browser = "Browser that is using";
+            
             
            
             
