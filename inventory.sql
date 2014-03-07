@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 07, 2014 at 04:51 AM
+-- Generation Time: Mar 07, 2014 at 05:51 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -35,17 +35,19 @@ CREATE TABLE IF NOT EXISTS `registerd_email` (
   `latitude` varchar(200) NOT NULL,
   `longitude` varchar(200) NOT NULL,
   `browser` varchar(200) NOT NULL,
+  `operating_system` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `registerd_email`
 --
 
-INSERT INTO `registerd_email` (`id`, `email`, `ip`, `country`, `city`, `latitude`, `longitude`, `browser`) VALUES
-(4, 'salyani@salyani.com', '49.244.201.140', 'Nepal', 'Lalitpur', '27.6667', '85.3333', ''),
-(5, 'bhomnath@salyani.com.np', 'undefined', 'undefined', 'undefined', 'undefined', 'undefined', 'Mozilla Firefox'),
-(6, 'ramji@as.com', '49.244.201.140', 'Nepal', 'Lalitpur', '27.6667', '85.3333', 'Mozilla Firefox');
+INSERT INTO `registerd_email` (`id`, `email`, `ip`, `country`, `city`, `latitude`, `longitude`, `browser`, `operating_system`) VALUES
+(4, 'salyani@salyani.com', '49.244.201.140', 'Nepal', 'Lalitpur', '27.6667', '85.3333', '', ''),
+(5, 'bhomnath@salyani.com.np', 'undefined', 'undefined', 'undefined', 'undefined', 'undefined', 'Mozilla Firefox', ''),
+(6, 'ramji@as.com', '49.244.201.140', 'Nepal', 'Lalitpur', '27.6667', '85.3333', 'Mozilla Firefox', ''),
+(7, 'ramji@as.com', '49.244.175.54', 'Nepal', 'Lalitpur', '27.6667', '85.3333', 'Mozilla Firefox', 'Windows 8');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

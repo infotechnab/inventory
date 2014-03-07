@@ -39,10 +39,10 @@ class Defaultview extends CI_Controller {
             $latitude = $_POST['latitude'];
             $longitude = $_POST['longitude'];
             $device = "Device browsing";
-            $OS= "OS of using software";
+            $OS= $_POST['os'];
             $browser = $_POST['browser'];
             
-            $this->dbmodel->registerd_email($email,$ipaddress,$country,$city,$latitude,$longitude,$browser);
+            $this->dbmodel->registerd_email($email,$ipaddress,$country,$city,$latitude,$longitude,$browser,$OS);
             
             
             $data['notifyMeMessage']= "Thank you for your interest.";
@@ -51,6 +51,12 @@ class Defaultview extends CI_Controller {
             
             
            
+            
+        }
+        
+        public function user_list(){
+            $data['query']= $this->dbmodel->user_list();
+            $this->load->view('user_list',$data);
             
         }
 }

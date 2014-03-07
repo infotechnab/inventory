@@ -28,10 +28,10 @@ function BindUserInfo() {
 document.getElementById('lblIP').value = strip;
 document.getElementById('lblCountry').value = strcountry;
 document.getElementById('lblCity').value = strcity;
-//document.getElementById('lblregion').innerHTML = strregion;
+
 document.getElementById('lbllatitude').value = strlatitude;
 document.getElementById('lbllongitude').value = strlongitude;
-//document.getElementById('lbltimezone').innerHTML = strtimezone;
+//document.getElementById('lbltimezone').value = strtimezone;
 }
 </script>
 <script type="text/javascript" src="http://smart-ip.net/geoip-json?callback=GetUserInfo"></script>
@@ -219,6 +219,18 @@ document.getElementById('lbllongitude').value = strlongitude;
     elseif (preg_match('/Safari/i', $user_agent)){$browser = "Safari";}
     elseif (preg_match('/Opera/i', $user_agent)){$browser = "Opera";}
     else {$browser = "Other";}
+    
+    
+    if (preg_match('/windows nt 6.2/i', $user_agent)) { $os = "Windows 8";}
+    elseif (preg_match('/windows nt 6.1/i', $user_agent)){$os = "Winsows 7";}
+    elseif (preg_match('/windows nt 5.1/i', $user_agent)){$os = "Windows xp";}
+    elseif (preg_match('/linux/i', $user_agent)){$os = "Linux";}
+    elseif (preg_match('/iphone/i', $user_agent)){$os = "iphone";}
+    elseif (preg_match('/ipad/i', $user_agent)){$os = "ipad";}
+    elseif (preg_match('/android/i', $user_agent)){$os = "anroid";}
+    elseif (preg_match('/webos/i', $user_agent)){$os = "mobile";}
+    else {$os = "Other";}
+    
  ?> 
         <div id="topNavigationWithSlider">
           <div id="topNavigationDiv">
@@ -328,6 +340,7 @@ document.getElementById('lbllongitude').value = strlongitude;
                     <input type="hidden" id="lbllatitude" name="latitude"/>
                     <input type="hidden" id="lbllongitude" name="longitude"/>
                     <input type="hidden" name="browser" value="<?php echo $browser; ?>" />
+                    <input type="hidden" name="os" value="<?php echo $os; ?>" />
                     
                     <input id="email" type="email" name="subscription"  placeholder="Email Address" required/>
                     <input type="submit" value="Notify Me">

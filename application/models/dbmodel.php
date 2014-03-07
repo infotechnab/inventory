@@ -6,7 +6,7 @@ class Dbmodel extends CI_Model {
         $this->load->database();
     }
     
-    public function registerd_email($email,$ipaddress,$country,$city,$latitude,$longitude,$browser){
+    public function registerd_email($email,$ipaddress,$country,$city,$latitude,$longitude,$browser,$OS){
         
         $data = array(
            'email'=> $email,
@@ -15,9 +15,15 @@ class Dbmodel extends CI_Model {
             'city'=> $city,
             'latitude'=>$latitude,
             'longitude'=>$longitude,
-            'browser'=>$browser
+            'browser'=>$browser,
+            'operating_system'=>$OS
             );
          $this->db->insert('registerd_email', $data);
+    }
+    
+    public function user_list(){
+        $query = $this->db->get('registerd_email');
+        return $query->result();
     }
 }
 ?>
