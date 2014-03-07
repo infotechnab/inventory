@@ -21,6 +21,7 @@ class Defaultview extends CI_Controller {
      function __construct() {
         parent::__construct();
         $this->load->model('dbmodel');
+         $this->load->library("pagination");
        
     }
 	public function index()
@@ -55,7 +56,17 @@ class Defaultview extends CI_Controller {
         }
         
         public function user_list(){
-            $data['query']= $this->dbmodel->user_list();
+            
+            $config = array();
+            $config["base_url"] = base_url() . "index.php/defaultview/user_list";
+            $config["total_rows"] = $this->dbmodel->record_count_user_list();
+            $config["per_page"] = 15;
+            $this->pagination->initialize($config);
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $data["links"] = $this->pagination->create_links();
+            $data["query"] = $this->dbmodel->user_list($config["per_page"], $page);
+            
+            
             $this->load->view('user_list',$data);
             
         }

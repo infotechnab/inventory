@@ -20,8 +20,11 @@ class Dbmodel extends CI_Model {
             );
          $this->db->insert('registerd_email', $data);
     }
-    
-    public function user_list(){
+     public function record_count_user_list() {
+        return $this->db->count_all("registerd_email");
+    }
+    public function user_list($limit, $start){
+         $this->db->limit($limit, $start); 
         $query = $this->db->get('registerd_email');
         return $query->result();
     }

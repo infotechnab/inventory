@@ -24,7 +24,8 @@ strtimezone = data.timezone;
 $(function () {
 BindUserInfo();
 })
-function BindUserInfo() {
+function BindUserInfo() { 
+
 document.getElementById('lblIP').value = strip;
 document.getElementById('lblCountry').value = strcountry;
 document.getElementById('lblCity').value = strcity;

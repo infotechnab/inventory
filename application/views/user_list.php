@@ -8,6 +8,10 @@
                 text-align: center;
                 background-color: #ccc;
             }
+            .link{
+                text-align: center;
+                margin-top: 15px;
+            }
             
             .listData{
                 padding: 3px;
@@ -51,5 +55,6 @@
      }
         } ?>
              </table>
+        <div class="link"> <?php  echo $links; ?> </div>
     </body>
 </html>
