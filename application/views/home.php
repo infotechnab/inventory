@@ -11,9 +11,10 @@
             Inventory Is Easy
         </title>
          <script type="text/javascript" src="<?php echo base_url(); ?>content/jquery-1.9.1.min.js"> </script>
-        
+         <link rel="stylesheet" media="screen" href="<?php echo base_url(); ?>content/css/style.css" type="text/css" />
          <script src="http://code.jquery.com/jquery-1.8.2.js" type="text/javascript"></script>
         <script type="text/javascript">
+          
             
 var strip, strcountry, strcity, strregion, strlatitude, strlongitude, strtimezone
 function GetUserInfo(data) {
@@ -34,180 +35,74 @@ document.getElementById('lbllatitude').value = strlatitude;
 document.getElementById('lbllongitude').value = strlongitude;
 //document.getElementById('lbltimezone').value = strtimezone;
 }
+
+
+//=============================check email valid or not ====================================//
+$(document).ready(function() {
+ 
+//    $('#notifyButton').click(function() { 
+//        var emailaddressVal = $("#notifyEmail").val();
+//       checkEmail(emailaddressVal);
+//}); 
+//
+//    $('#signupButton').click(function() { 
+//        var emailaddressVal = $("#signupEmail").val();
+//       checkEmail(emailaddressVal);
+//});
+//$('#loginButton').click(function() { 
+//        var emailaddressVal = $("#loginEmail").val();
+//       checkEmail(emailaddressVal);
+//});
+$('#loginLink').click(function(){
+   $('#featueFullDiv').css('opacity','.5');
+    $(".loginDiv").css({
+        position: "fixed",
+        top:"25%",
+        left:"35%"
+    }).show();
+});
+
+$('#signup_link').click(function(){
+   $('#featueFullDiv').css('opacity','.5');
+    $(".signupDiv ").css({
+        position: "fixed",
+        top:"25%",
+        left:"35%"
+    }).show();
+});
+
+    $('.closeLink').click(function(){
+       $('.loginDiv').css('display','none');
+       $('.signupDiv').css('display','none');
+       $('#featueFullDiv').css('opacity','1');
+    });
+
+});
+
+function checkEmail(emailaddressVal){
+     var Error = false;
+        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+ 
+        
+        if(emailaddressVal == '') {
+            alert('email address can not be blank!');
+            Error = true;
+            return false;
+        }
+ 
+        else if(!emailReg.test(emailaddressVal)) {
+            alert('Pleae type a correct email address');
+            Error = true;
+            return false;
+        }
+ 
+       
+ 
+    }
+
 </script>
 <script type="text/javascript" src="http://smart-ip.net/geoip-json?callback=GetUserInfo"></script>
-        <style>
-            html
-            {
-                margin: 0;
-                padding: 0;
-            }
-            body
-            {
-                margin: 0;
-                padding: 0;
-                font-family:"Whitney SSm A","Whitney SSm B","Helvetica Neue",Helvetica,Arial,sans-serif;
-            }
-            #topNavigationWithSlider
-            {
-                background: #00620C url('http://localhost/inventory/content/images/inventrogb.jpg') fixed; 
-                background-repeat: no-repeat;
-                width: 100%;
-                height: 650px;
-                border-bottom: 2px solid #fff;
-                
-            }
-            #topNavigationDiv
-            {
-                margin: 0 auto 0 auto;
-
-                height: 60px;
-                background-color: #0096d6;
-
-                color: #fff;
-                position: fixed;
-                width: 100%;        
-
-            }
-            #topNavigationDiv:hover
-            {
-                opacity: 1;
-            }
-            #topNavigationDiv a
-            {
-                color: #fff;
-                text-decoration: none;
-                margin-right: 20px;
-                opacity: 1;
-                font-weight: bold;            
-            }
-
-            .centerDiv
-            {
-                padding: 10px;
-                margin: 0 auto 0 auto;
-                width: 80%;
-
-            }
-            #topNavigation
-            {
-                padding: 10px;
-                margin: 0 auto 0 auto;
-                width: 80%;
-                text-align:right;
-
-
-            }
-            #sliderDescriptionDiv
-            {
-                padding-top: 200px;
-                text-align: right;
-                color: #ffffff;
-
-
-            }
-            #sliderDescriptionDiv h1,   #sliderDescriptionDiv p
-            {
-
-            }
-            #featureRibbonDiv{
-                min-height: 200px; 
-                background-color: #0096d6;
-
-            }
-            #featureRibbon
-            {
-
-            }
-            #logoDiv
-            {
-                width: 10%;
-                float: left;
-
-            }
-            #logoDiv img
-            {
-                height: 50px;
-                margin: -7px;
-                padding: 0;
-            }
-            .featureIteamDiv
-            {
-                width: 25%;
-                float: left;
-                margin-right: 20px;
-                padding: 10px;
-                min-width: 200px;
-                color: #fff;
-            }
-            .clear
-            {
-                clear: both;
-                height: 1px;
-            }
-
-            .featureDisplay
-            {
-
-                width: 80%;
-                margin: 0 auto 0 auto;
-                min-height: 300px;
-            }
-            #featueFullDiv hr
-            {
-                background-image: linear-gradient(to right, #FFFFFF, #DCDCDC 50%, #FFFFFF);
-                background-repeat: no-repeat;
-                border: 0 none;
-                height: 2px;
-                clear: both;
-            }
-            .featureImageDiv, .featureDiscriptionDiv
-            {
-                width: 50%; 
-                float: left;
-            }
-            .featureDiscriptionDiv
-            {
-                padding-top: 150px;
-
-            }
-            #subscriptionDiv
-            {
-                padding:20px;
-            }
-            #subscriptionDiv h2, #subscriptionDiv form
-            {
-                width: 45%;
-                float: left;
-                margin: 0;
-                padding: 20px;
-                color: #fff;
-
-
-            }
-            #subscriptionDiv h2
-            {
-                text-align: justify;
-            }
-            #subscriptionDiv form{
-
-            }
-            #subscriptionDiv input
-            {
-                padding: 10px;
-                font-weight: bold;
-
-            }
-            #email
-            {
-                width: 50%;
-            }
-            #whitePara
-            {
-                color: #fff;
-            }
-
-        </style>
+     
     </head>
     <body>
         <?php 
@@ -243,7 +138,8 @@ document.getElementById('lbllongitude').value = strlongitude;
                     </div>
                     <a href="#">HOME</a>
                     <a href="#explore">EXPLORE</a>
-                    <a href="#explore">SIGN UP</a>
+                    <a id="signup_link" href="#explore">SIGN UP</a>
+                    <a id="loginLink" href="#explore">LOGIN</a>
                 </div>
 
 
@@ -324,7 +220,7 @@ document.getElementById('lbllongitude').value = strlongitude;
         <div id="featureRibbonDiv">
             <div class="centerDiv" id="featureRibbon">
                 <div id="subscriptionDiv">
-                    <a name="notifyMePlz"/>
+                    <a name="notifyMePlz"> </a>
                     <h2> 
                         Let us notify you when we are ready to serve you with this product.
                     </h2>
@@ -333,7 +229,7 @@ document.getElementById('lbllongitude').value = strlongitude;
                     if (!isset($notifyMeMessage)) {                       
                    
                     ?>
-                    <?php echo form_open('/defaultview/notifyme/#notifyMePlz') ?>
+                    <?php echo form_open('/defaultview/notifyme/#notifyMePlz');   ?>
                     
                     <input type="hidden" id="lblIP" name="ip" />
                     <input type="hidden" id="lblCountry" name="country" />
@@ -343,8 +239,8 @@ document.getElementById('lbllongitude').value = strlongitude;
                     <input type="hidden" name="browser" value="<?php echo $browser; ?>" />
                     <input type="hidden" name="os" value="<?php echo $os; ?>" />
                     
-                    <input id="email" type="email" name="subscription"  placeholder="Email Address" required/>
-                    <input type="submit" value="Notify Me">
+                    <input id="notifyEmail" type="email" name="subscription"  placeholder="Email Address" required/>
+                    <input type="submit" value="Notify Me" id="notifyButton"/>
                     <?php }
                     else
                     {
@@ -353,9 +249,88 @@ document.getElementById('lbllongitude').value = strlongitude;
                         <?php 
                     }
                     ?>
+                    <?php echo form_close(); ?>
                 </div>
             </div>
             <div class="clear"></div>
         </div>
+        <div class="footerDiv">
+        <div class="mapDiv">
+            <label class="siteLable"> Site Map </label>
+            <a class="siteMap" href="#"> HOME </a>
+            <a class="siteMap" href="#"> PAGE </a>
+        </div>
+        
+        <div class="mapDiv">
+            <label class="siteLable"> Social Share </label>
+            <a class="siteMap" href="#"> HOME </a>
+            <a class="siteMap" href="#"> PAGE </a>
+        </div>
+        
+        <div class="mapDiv">
+            <label class="siteLable"> Quick Contact </label>
+            <a class="siteMap" href="#"> HOME </a>
+            <a class="siteMap" href="#"> PAGE </a>
+        </div>
+        
+        <div class="mapDiv">
+            <label class="siteLable"> Useful Link </label>
+            <a class="siteMap" href="#"> HOME </a>
+            <a class="siteMap" href="#"> PAGE </a>
+        </div>
+    </div>
+         <div class="clear"></div>
+        <div class="visitorLink">
+        <!-- hitwebcounter Code START -->
+<a  href="http://salyani.com.np/" target="_blank">
+<img src="http://hitwebcounter.com/counter/counter.php?page=5295345&style=0030&nbdigits=5&type=ip&initCount=0" title="Visitors Counter" Alt="Visitors Counter"   border="0" >
+</a><br/>
+        </div>
+
+        
+        <!-- ======================== FOR Sign Up ============================== -->
+        <div class="signupDiv" style="display: none">
+            <a href="#" class="closeLink" >Close</a>
+            <div class="signupHeading"> <h2>Sign Up</h2></div>
+            <div class="singupFormDiv"> 
+                <?php //$emailcheck = array('onsubmit' => "checkEmail()"); ?>
+                <?php echo form_open('/defaultview/add_user'); ?>
+               
+                    <input type="text" name="signupFname" placeholder="first name" size="40" class="signText" />
+                    <input type="text" name="signupLname" placeholder="last name" size="40" class="signText"/> 
+                   
+                    <input type="email" name="signup_email" placeholder="email" id="signupEmail" size="40" class="signText"/>
+                    <input type="password" name="signup_password" placeholder="password" id="signupPassword" size="40" class="signText"/>
+                    <input type="submit" value="Sign Up" id="signupButton" class="button_class"/>
+               <?php echo form_close(); ?>     
+               </div>
+        </div>
+        
+        <!--========================= Login Div =============================== -->
+        <div class="loginDiv" style="display: none">
+            <a href="#" class="closeLink" >Close</a>
+            <div class="loginHeading"> <h2>Login To Your Account</h2>   </div>
+            <div class="loginFormDiv">
+                <p id="sucessmsg">
+<?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');}
+    echo validation_errors(); ?> </p>
+               
+                <?php echo form_open('/defaultview/validate_credentials'); ?>
+                
+               <input type="email" name="login_email" placeholder="email" id="loginEmail" size="41" class="signText"/>
+                    <input type="password" name="login_password" placeholder="password" id="signupPassword" size="41" class="signText"/>
+                    <input type="submit" value="Login" id="loginButton" class="button_class"/>
+                   
+               <?php echo form_close(); ?> 
+            </div>
+            <?php if(isset($msg)){
+                echo $msg;
+            } ?>
+        </div>
+        
+      
+        
+        
+ 
     </body>
 </html>
